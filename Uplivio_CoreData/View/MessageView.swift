@@ -22,18 +22,30 @@ class MessageView: UIView {
         label.alpha = 0.0 // Animasyon öncesi görünmez
         return label
     }()
-    
+
+    // Sağ alt köşeye eklenecek buton
+    let addButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("🦔", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 30) 
+        button.backgroundColor = .clear
+        button.layer.cornerRadius = 15
+        button.clipsToBounds = true
+        return button
+    }()
+
     private let gradientLayer = CAGradientLayer()
-
-
-
 
     // MARK: - Initializers
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()    }
+        setupUI()
+    }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -47,21 +59,29 @@ class MessageView: UIView {
 
         // Mesaj Label'ı ekle
         addSubview(messageLabel)
+        addSubview(addButton)
 
         NSLayoutConstraint.activate([
             messageLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             messageLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
-            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
+            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+
+            // Sağ alt köşeye butonu yerleştiriyoruz
+            addButton.widthAnchor.constraint(equalToConstant: 50),
+            addButton.heightAnchor.constraint(equalToConstant: 50),
+            addButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            addButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)
+
         ])
     }
-    
+
     // MARK: - Functions
-    
+
     override func layoutSubviews() {
-            super.layoutSubviews()
+        super.layoutSubviews()
         gradientLayer.frame = bounds
-        }
+    }
 
     func fadeInText() {
         // UIView animasyonu ile opacity'yi değiştiriyoruz
@@ -69,15 +89,12 @@ class MessageView: UIView {
                        delay: 0.0, // animasyon başlamadan önceki bekleme süresi
                        options: .curveEaseIn, // animasyon eğrisi
                        animations: {
-            self.messageLabel.alpha = 1.0 // Opaklığı 1.0'a (tamamen görünür) getiriyoruz
+                           self.messageLabel.alpha = 1.0 // Opaklığı 1.0'a (tamamen görünür) getiriyoruz
                        }, completion: nil)
     }
-    
-    
+
     // Set gradient background
     private func setGradientBackground() {
-
-
         let colors = BackgroundColors.randomTwoColors()
         gradientLayer.colors = [colors.color1.cgColor, UIColor.white.cgColor, colors.color2.cgColor]
         gradientLayer.startPoint = CGPoint(x: 1, y: 0.0)

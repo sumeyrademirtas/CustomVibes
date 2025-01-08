@@ -21,16 +21,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = messageView
+        messageView.addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
 
-        // Kullanıcının dil tercihine göre JSON verisini ViewModel'e yükle
-        let currentLanguage = Locale.preferredLanguages.first?.prefix(2) == "tr" ? "tr" : "en"
-        viewModel.loadMessages(for: currentLanguage)
-
+        // ViewModel'i kullanarak mesajları Core Data'dan yükle
+        let todayMessage = viewModel.getMessageForToday()
+        
         // Güne göre mesajı ekranda göster
-        messageView.messageLabel.text = viewModel.getMessageForToday()
+        messageView.messageLabel.text = todayMessage
         messageView.messageLabel.alpha = 0.0
         
+        // Animasyonlu bir şekilde mesajı göster
         updateMessageLabel()
+    }
+    
+    // Butona tıklanınca çalışacak fonksiyon
+    @objc private func addButtonTapped() {
+        let customSentencesVC = CustomSentencesViewController() // Yeni ekranın instance'ı
+        navigationController?.pushViewController(customSentencesVC, animated: true)
     }
 
     // Animasyonu viewDidAppear'da başlatıyoruz

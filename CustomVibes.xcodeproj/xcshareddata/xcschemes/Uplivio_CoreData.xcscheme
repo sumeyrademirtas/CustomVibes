@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8140DC462CC8EF500014DB7E"
-               BuildableName = "Uplivio_CoreData.app"
-               BlueprintName = "Uplivio_CoreData"
-               ReferencedContainer = "container:Uplivio_CoreData.xcodeproj">
+               BuildableName = "CustomVibes.app"
+               BlueprintName = "CustomVibes"
+               ReferencedContainer = "container:CustomVibes.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8140DC462CC8EF500014DB7E"
-            BuildableName = "Uplivio_CoreData.app"
-            BlueprintName = "Uplivio_CoreData"
-            ReferencedContainer = "container:Uplivio_CoreData.xcodeproj">
+            BuildableName = "CustomVibes.app"
+            BlueprintName = "CustomVibes"
+            ReferencedContainer = "container:CustomVibes.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8140DC462CC8EF500014DB7E"
-            BuildableName = "Uplivio_CoreData.app"
-            BlueprintName = "Uplivio_CoreData"
-            ReferencedContainer = "container:Uplivio_CoreData.xcodeproj">
+            BuildableName = "CustomVibes.app"
+            BlueprintName = "CustomVibes"
+            ReferencedContainer = "container:CustomVibes.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
