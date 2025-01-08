@@ -82,7 +82,6 @@ class LaunchScreenViewController: UIViewController {
     func startLottieAnimationandGoToMainScreen() {
         animationView.play()
         let mainVC = ViewController()
-//        mainVC.fetchDailyMotivationMessage()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
             guard let self = self else { return }
